@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 import open from "open";
 import fs from "fs-extra";
 import { render } from "./mjml";
-import { error, log } from "./log";
+import { debug, error, log } from "./log";
 import fetch from "node-fetch";
 
 export type ComponentMail = nodemailer.SendMailOptions & {
@@ -117,7 +117,7 @@ export function buildSendMail(options: BuildSendMailOptions) {
     }
 
     const response = await options.transport.sendMail(htmlMail);
-    log("sendMail response", response);
+    debug("sendMail response", response);
 
     return response;
   };
